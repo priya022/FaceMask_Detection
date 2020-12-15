@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Dock UI</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link href="/static/css/style.css" rel="stylesheet">
+<link href="/static/css/login.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900,100' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="login_from">
+    <div class="Login_heading">
+        <div class="login_left">
+            <!-- <h1>Login Form </h1> --></div>
+        <!-- <h1>Login Form </h1> -->
+        <div class="login_right">
+            <a href="{% url 'registerUser'%}" class="register">Register</a>
+        </div>
+    </div>
+    <div class="from_center">
+        <div class="login_logo">
+            <div class="logo_img">
+                <img src="static/images/hawk_logo.jpg" class="img-fluid">
+            </div>
+        </div>
+        <form id="loginForm" action="{% url 'dashboardlogin' %}" method="POST">
+            {% csrf_token %}
+            <div class="container_login">
+                <label>Username<span class="imp">*</span> : </label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <label>Password<span class="imp">*</span> : </label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <label>Roles<span class="imp">*</span> : </label>
+                <select id="user_category" name="user_category" class="reg_sel login_sel">
+                    <option>Select Roles</option>
+                    <option value="production instance">Production Incidents</option>
+                    <option value="mobile user reviews">Mobile User Reviews</option>
+                </select>
+                <button type="submit">Login</button>
+                <div class="remember">
+                    <div class="rem_login">
+                        <input type="checkbox" checked="checked"> Remember me
+                    </div>
+                    <!-- <button type="button" class="cancelbtn"> Cancel</button>    -->
+                    <div class="forgot">Forgot <a href="#"> password? </a></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

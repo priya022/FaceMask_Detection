@@ -1,0 +1,62 @@
+.jumbotron {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* The device with borders */
+.smartphone {
+  position:absolute;
+  top:160px;
+  right:30px;
+  width: 350px;
+  height: 500px;
+  margin: auto;
+  border: 16px black solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+}
+
+/* The horizontal line on the top of the device */
+.smartphone:before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  position: relative;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 10px;
+}
+
+/* The circle on the bottom of the device */
+.smartphone:after {
+  content: '';
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  left: 50%;
+  bottom: -65px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* The screen (or content) of the device */
+.smartphone .content {
+  width:300px;
+  height:360px;
+  background: white;
+}
+.card-image {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  width: 300px;
+  height: 450px;
+  background-image: url(../static/images/facemask_cover.jpg);
+  top:200px;
+  left:200px;
+}

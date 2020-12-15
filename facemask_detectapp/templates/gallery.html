@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_styles %}
+<link href="/static/css/detect_image.css" rel="stylesheet">
+{% endblock %}
+{% block extra_js %}
+<!--<script src="/static/JS/main.js"></script>-->
+{% endblock %}
+{% block content %}
+<style>
+
+/* The device with borders */
+.smartphone {
+  position:absolute;
+  top:160px;
+  right:30px;
+  width: 350px;
+  height: 500px;
+  margin: auto;
+  border: 16px black solid;
+  border-top-width: 60px;
+  border-bottom-width: 60px;
+  border-radius: 36px;
+}
+
+/* The horizontal line on the top of the device */
+.smartphone:before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 5px;
+  position: relative;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 10px;
+}
+
+/* The circle on the bottom of the device */
+.smartphone:after {
+  content: '';
+  display: block;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  left: 50%;
+  bottom: -65px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* The screen (or content) of the device */
+.smartphone .content {
+  width:300px;
+  height:360px;
+  background: white;
+}
+.card-image {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  width: 300px;
+  height: 450px;
+  background-image: url(../static/images/facemask_cover.jpg);
+  top:200px;
+  left:200px;
+}
+#img_recognize
+{
+display:inline-block;
+}
+a{
+top:20px;
+float:right;
+}
+</style>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Gallery</h1>
+                <h4>Display Webcam captured images at a time and display in gallery</h4>
+            </div>
+            <div class="col-md-6">
+                <a href="{% url 'dashboard' %}">Return to Dashboard</a>
+            </div>
+        </div>
+      </div>
+</div>
+<div class="row>">
+    <div class="col-md-4">
+<!--        <div class="card-image" ></div>-->
+        <div class="card" style="width:500px;">
+            <div class="card-body">
+              <h4 class="card-title">Upload a Image</h4>
+                <form method="POST" id="uploadimageform">
+                    {% csrf_token %}
+                    Img:
+                         <input type="file" name="img"/><button id="submit" type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+            <div id="img_recognize">
+                <img class="card-img-bottom" id="profile" src="/static/images/facemask_cover.jpg" alt="Card image">
+            <button id="review">Recognize</button>
+            </div>
+
+
+        </div>
+      </div>
+    <div class=" col-md-4 smartphone">
+          <div class="content">
+<!--              <p id="masklabel"></p>-->
+          </div>
+    </div>
+</div>
+
+<script src="/static/JS/detect_image.js"></script>
+
+
+
+
+{% endblock %}
